@@ -1,0 +1,45 @@
+N, K = int(input()), int(input())
+Massive = []
+Sighned = []
+Bin = []
+for i in range(1,N + 1):
+    Massive.append(i)
+l = True
+shag = 0
+i = 1
+while len(Massive) > 0:
+    if (i == 1):
+        if (l == True):
+            shag += 1
+        Sighned.append(Massive[0])
+        if (Massive[0] == K):
+            l = False
+        Massive = Massive[1::]
+        i += 1
+    elif (i == 2):
+        Bin.append(Massive[0])
+        if (l == True):
+            shag += 1
+        if (Massive[0] == K):
+            l = False
+        Massive = Massive[1::]
+        i += 1
+    else:
+        i = 1
+        if (l == True):
+            shag += 1
+        Massive.append(Massive[0])
+        Massive = Massive[1::]
+        
+
+if (K in Sighned):
+    print("Yes")
+else:
+    print("No")
+print(shag)
+
+        
+        
+
+
+
