@@ -2,8 +2,9 @@
 
 [![wakatime](https://wakatime.com/badge/user/609e9763-1603-4ffa-b11a-a41d2d127805.svg)](https://wakatime.com/@609e9763-1603-4ffa-b11a-a41d2d127805)
 [![github](https://img.shields.io/github/followers/tickflag?logo=github&style=plastic)](https://github.com/tickflag?tab=followers)
-[![vk](https://vk.com/tickflag)](https://vk.com/tickflag)
+[](https://www.codewars.com/users/tickflag/badges/micro)
 
+📫 How to reach me: [vk](https://vk.com/tickflag)
 <!--
 **tickflag/tickflag** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 [](url)
