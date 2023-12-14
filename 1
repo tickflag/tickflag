@@ -2,3 +2,22 @@ a, b = map(int, input().split())
 n = min(a, b)
 m = max(a, b)
 print((n + m) * (m - n + 1) // 2)
+
+def check_string(s):
+    while '()' in s or '[]' in s or '{}' in s or '<>' in s:
+        s = s.replace('()', '')
+        s = s.replace('[]', '')
+        s = s.replace('{}', '')
+        s = s.replace('<>', '')
+
+    return not s
+
+n = int(input())
+out = ''
+
+for i in range(n):
+    inp = input()
+    inp = ''.join(inp.split(' '))
+    out += str(int(not check_string(inp)))
+
+print(out)
