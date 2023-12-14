@@ -21,3 +21,30 @@ for i in range(n):
     out += str(int(not check_string(inp)))
 
 print(out)
+
+
+
+def check_string(s):
+    stack = []
+    opening_brackets = '({[<'
+    closing_brackets = ')}]>'
+    bracket_map = {')': '(', '}': '{', ']': '[', '>': '<'}
+
+    for char in s:
+        if char in opening_brackets:
+            stack.append(char)
+        elif char in closing_brackets:
+            if not stack or stack.pop() != bracket_map[char]:
+                return False
+
+    return not stack
+
+n = int(input())
+out = ''
+
+for i in range(n):
+    inp = input()
+    out += str(int(not check_string(inp)))
+
+print(out)
+
