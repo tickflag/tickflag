@@ -70,3 +70,24 @@ print(decrypted_message)
 S
 Tfhpeozb Gspep jtqpmojmpt 33 hpeb.
 Segodnya Frodo ispolnilos 33 goda.
+
+
+def decrypt_caesar_cipher(start_letter, encrypted_message):
+    result = ""
+    for char in encrypted_message:
+        if char.isalpha():  # Проверяем, является ли символ буквой
+            if char.islower():  # Если буква строчная
+                decrypted_char = chr((ord(char) - ord(start_letter.lower()) + 26) % 26 + ord('a'))
+            else:  # Если буква заглавная
+                decrypted_char = chr((ord(char) - ord(start_letter.upper()) + 26) % 26 + ord('A'))
+            result += decrypted_char
+        else:
+            result += char  # Оставляем цифры, пробелы и знаки на своих местах
+    return result
+
+# Ввод
+start_letter = input().strip()
+encrypted_message = input().strip()
+
+# Вывод
+print(decrypt_caesar_cipher(start_letter, encrypted_message))
