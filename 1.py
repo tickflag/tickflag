@@ -153,3 +153,37 @@ fr = list(map(int, input().split()))
 to = list(map(int, input().split()))
 print(knight(fr, to))
 
+
+
+knight_moves = [(-2, 1), (-1, 2), (1, 2), (2, 1), (2, -1), (1, -2), (-1, -2), (-2, -1)]
+
+def knight(p1, p2, n):
+    p1 = list(p1)
+    p1[1] = int(p1[1])
+    p2 = list(p2)
+    p2[1] = int(p2[1])
+    places = [p1]
+    pos = get_possible_moves(places=places, n=n)
+    for tries, _ in enumerate(range(5000), start=1):
+        if p2 in pos:
+            return tries
+        pos = get_possible_moves(places=pos, n=n)
+
+def get_possible_moves(places, n):
+    possible_moves = []
+    for place in places:
+        x = place[0]
+        y = place[1]
+        for dx, dy in knight_moves:
+            new_x = x + dx
+            new_y = y + dy
+            if 1 <= new_x <= n and 1 <= new_y <= n and [new_x, new_y] not in possible_moves:
+                possible_moves.append([new_x, new_y])
+
+    return possible_moves
+
+n = int(input())
+fr = list(map(int, input().split()))
+to = list(map(int, input().split()))
+print(knight(fr, to, n))
+
