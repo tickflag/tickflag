@@ -85,3 +85,37 @@ if s:
             out += i
 
 print(out)
+
+
+
+import java.util.Scanner;
+
+public class StringDecryption {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter letter: ");
+        String letter = scanner.nextLine();
+
+        System.out.print("Enter s: ");
+        String s = scanner.nextLine();
+
+        String out = "";
+        int coeff = (int) (s.charAt(0) - letter.charAt(0));
+
+        if (!s.isEmpty()) {
+            for (int i = 0; i < s.length(); i++) {
+                char currentChar = s.charAt(i);
+                if ('a' <= currentChar && currentChar <= 'z') {
+                    out += (char) ((currentChar - coeff - 'a' + 26) % 26 + 'a');
+                } else if ('A' <= currentChar && currentChar <= 'Z') {
+                    out += (char) ((currentChar - coeff - 'A' + 26) % 26 + 'A');
+                } else {
+                    out += currentChar;
+                }
+            }
+        }
+
+        System.out.println(out);
+    }
+}
