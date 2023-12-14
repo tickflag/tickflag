@@ -220,3 +220,76 @@ begin
 end.
 
 
+import java.util.Scanner;
+
+class Cell {
+    int x, y;
+
+    Cell(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+public class MazeSolver {
+    static Cell[] queue;
+    static int[][] a;
+    static int x1, y1, x2, y2, i, j, t, h, n;
+
+    static void push(Cell p) {
+        queue[t] = p;
+        t++;
+    }
+
+    static Cell pop() {
+        Cell popped = queue[h];
+        h++;
+        return popped;
+    }
+
+    static boolean isEmpty() {
+        return h == t;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        h = 1;
+        t = 1;
+
+        n = scanner.nextInt();
+        x1 = scanner.nextInt();
+        y1 = scanner.nextInt();
+        x2 = scanner.nextInt();
+        y2 = scanner.nextInt();
+
+        queue = new Cell[700];
+        a = new int[30][30];
+
+        for (i = 1; i <= n; i++)
+            for (j = 1; j <= n; j++)
+                a[i][j] = -1;
+
+        a[x1][y1] = 0;
+
+        Cell p = new Cell(x1, y1);
+        push(p);
+
+        while (!isEmpty()) {
+            p = pop();
+
+            for (i = -2; i <= 2; i++)
+                for (j = -2; j <= 2; j++)
+                    if (i * i + j * j == 5 && a[p.x + i][p.y + j] == -1) {
+                        Cell p1 = new Cell(p.x + i, p.y + j);
+                        push(p1);
+                        a[p1.x][p1.y] = a[p.x][p.y] + 1;
+                    }
+        }
+
+        System.out.println(a[x2][y2]);
+    }
+}
+
+
+
