@@ -73,18 +73,14 @@ letter = str(input())
 s = str(input())
 
 out = ''
-coeff = ((ord(letter) - ord(s[0])))
-if coeff < 0: coeff = 26 + coeff
-coeff -= 1
+coeff = (ord(s[0]) - ord(letter))
 
 if s:
     for i in s:
-        if 
-        if i.isalpha():
-            if i.isupper():
-                out += chr((ord(i) + coeff - 64) % 26 + 65)
-            else:
-                out += chr((ord(i) + coeff - 96) % 26 + 97)
+        if 'a' <= i and i <= 'z':
+            out += chr((ord(i) - coeff - ord('a') + 26) % 26 + ord('a'))
+        elif 'A' <= i and i <= 'Z':
+            out += chr((ord(i) - coeff - ord('A') + 26) % 26 + ord('A'))
         else:
             out += i
 
