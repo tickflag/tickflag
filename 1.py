@@ -187,3 +187,71 @@ fr = list(map(int, input().split()))
 to = list(map(int, input().split()))
 print(knight(fr, to, n))
 
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class KnightMoves {
+
+    private static final int[][] knightMoves = {
+            {-2, 1}, {-1, 2}, {1, 2}, {2, 1},
+            {2, -1}, {1, -2}, {-1, -2}, {-2, -1}
+    };
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int n = scanner.nextInt();
+        int[] from = {scanner.nextInt(), scanner.nextInt()};
+        int[] to = {scanner.nextInt(), scanner.nextInt()};
+
+        System.out.println(knight(from, to, n));
+    }
+
+    private static int knight(int[] p1, int[] p2, int n) {
+        List<int[]> places = new ArrayList<>();
+        places.add(p1);
+
+        List<int[]> pos = getPossibleMoves(places, n);
+
+        for (int tries = 1; tries <= 5000; tries++) {
+            if (containsPosition(pos, p2)) {
+                return tries;
+            }
+            pos = getPossibleMoves(pos, n);
+        }
+
+        return -1; // If no solution is found within 5000 tries
+    }
+
+    private static List<int[]> getPossibleMoves(List<int[]> places, int n) {
+        List<int[]> possibleMoves = new ArrayList<>();
+
+        for (int[] place : places) {
+            int x = place[0];
+            int y = place[1];
+
+            for (int[] move : knightMoves) {
+                int newX = x + move[0];
+                int newY = y + move[1];
+
+                if (1 <= newX && newX <= n && 1 <= newY && newY <= n && !containsPosition(possibleMoves, new int[]{newX, newY})) {
+                    possibleMoves.add(new int[]{newX, newY});
+                }
+            }
+        }
+
+        return possibleMoves;
+    }
+
+    private static boolean containsPosition(List<int[]> positions, int[] position) {
+        for (int[] pos : positions) {
+            if (pos[0] == position[0] && pos[1] == position[1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
