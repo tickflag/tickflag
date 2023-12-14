@@ -292,4 +292,51 @@ public class MazeSolver {
 }
 
 
+class Cell:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+def push(queue, p):
+    queue.append(p)
+
+def pop(queue):
+    return queue.pop(0)
+
+def is_empty(h, t):
+    return h == t
+
+def main():
+    queue = []
+    a = [[-1] * 28 for _ in range(28)]
+
+    x1, y1, x2, y2 = map(int, input().split())
+    n = int(input())
+
+    for i in range(1, n + 1):
+        for j in range(1, n + 1):
+            a[i][j] = -1
+
+    a[x1][y1] = 0
+    p = Cell(x1, y1)
+    push(queue, p)
+
+    h = t = 0
+
+    while not is_empty(h, t):
+        p = pop(queue)
+
+        for i in range(-2, 3):
+            for j in range(-2, 3):
+                if i**2 + j**2 == 5 and a[p.x + i][p.y + j] == -1:
+                    p1 = Cell(p.x + i, p.y + j)
+                    push(queue, p1)
+                    a[p1.x][p1.y] = a[p.x][p.y] + 1
+
+    print(a[x2][y2])
+
+if __name__ == "__main__":
+    main()
+
+
 
