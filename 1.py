@@ -121,137 +121,102 @@ public class StringDecryption {
 }
 
 
-knight_moves = [(-2, 1), (-1, 2), (1, 2), (2, 1), (2, -1), (1, -2), (-1, -2), (-2, -1)]
+type
 
-def knight(p1, p2):
-    p1 = list(p1)
-    p1[1] = int(p1[1])
-    p2 = list(p2)
-    p2[1] = int(p2[1])
-    places = [p1]
-    pos = get_possible_moves(places=places, n=n)
-    for tries, _ in enumerate(range(5000), start=1):
-        if p2 in pos:
-            return tries
-        pos = get_possible_moves(places=pos, n=n)
+  cell = record
 
-def get_possible_moves(places, n):
-    possible_moves = []
-    for place in places:
-        x = place[0]
-        y = place[1]
-        for dx, dy in knight_moves:
-            new_x = x + dx
-            new_y = y + dy
-            if 1 <= new_x <= n and 1 <= new_y <= n and [new_x, new_y] not in possible_moves:
-                possible_moves.append([new_x, new_y])
+  x, y: integer;
 
-    return possible_moves
+  end;
 
-n = int(input())
-fr = list(map(int, input().split()))
-to = list(map(int, input().split()))
-print(knight(fr, to))
+var
+
+  queue: array[1..700] of cell;
+
+  a: array[-1..27, -1..27] of integer;
+
+  x1, y1, x2, y2, i, j, t, h, n: integer;
+
+  p, p1: cell;
+
+procedure push(p: cell);
+
+begin
+
+  queue[t] := p;
+
+  inc(t);
+
+end;
+
+function pop(): cell;
+
+begin
+
+  pop := queue[h];
+
+  inc(h);
+
+end;
+
+function isEmpty(): boolean;
+
+begin
+
+  isEmpty := false;
+
+  if h = t then isEmpty := true;
+
+end;
+
+begin
+
+  h := 1;
+
+  t := 1;
+
+  read(n, x1, y1, x2, y2);
+
+  for i := 1 to n do
+
+  for j := 1 to n do
+
+  a[i, j] := -1;
+
+  a[x1, y1] := 0;
+
+  p. x := x1;
+
+  p. y := y1;
+
+  push(p);
+
+  while not isEmpty() do
+
+  begin
+
+  p := pop();
+
+  for i := -2 to 2 do
+
+  for j := -2 to 2 do
+
+  if (i * i + j * j = 5) and (a[p. x + i, p. y + j] = -1) then begin
+
+  p1.x := p. x + i;
+
+  p1.y := p. y + j;
+
+  push(p1);
+
+  a[p1.x, p1.y] := a[p. x, p. y] + 1;
+
+  end;
+
+  end;
+
+  write(a[x2, y2]);
+
+end.
 
 
-
-knight_moves = [(-2, 1), (-1, 2), (1, 2), (2, 1), (2, -1), (1, -2), (-1, -2), (-2, -1)]
-
-def knight(p1, p2, n):
-    p1 = list(p1)
-    p1[1] = int(p1[1])
-    p2 = list(p2)
-    p2[1] = int(p2[1])
-    places = [p1]
-    pos = get_possible_moves(places=places, n=n)
-    for tries, _ in enumerate(range(5000), start=1):
-        if p2 in pos:
-            return tries
-        pos = get_possible_moves(places=pos, n=n)
-
-def get_possible_moves(places, n):
-    possible_moves = []
-    for place in places:
-        x = place[0]
-        y = place[1]
-        for dx, dy in knight_moves:
-            new_x = x + dx
-            new_y = y + dy
-            if 1 <= new_x <= n and 1 <= new_y <= n and [new_x, new_y] not in possible_moves:
-                possible_moves.append([new_x, new_y])
-
-    return possible_moves
-
-n = int(input())
-fr = list(map(int, input().split()))
-to = list(map(int, input().split()))
-print(knight(fr, to, n))
-
-
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-public class KnightMoves {
-
-    private static final int[][] knightMoves = {
-            {-2, 1}, {-1, 2}, {1, 2}, {2, 1},
-            {2, -1}, {1, -2}, {-1, -2}, {-2, -1}
-    };
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        int n = scanner.nextInt();
-        int[] from = {scanner.nextInt(), scanner.nextInt()};
-        int[] to = {scanner.nextInt(), scanner.nextInt()};
-
-        System.out.println(knight(from, to, n));
-    }
-
-    private static int knight(int[] p1, int[] p2, int n) {
-        List<int[]> places = new ArrayList<>();
-        places.add(p1);
-
-        List<int[]> pos = getPossibleMoves(places, n);
-
-        for (int tries = 1; tries <= 5000; tries++) {
-            if (containsPosition(pos, p2)) {
-                return tries;
-            }
-            pos = getPossibleMoves(pos, n);
-        }
-
-        return -1; // If no solution is found within 5000 tries
-    }
-
-    private static List<int[]> getPossibleMoves(List<int[]> places, int n) {
-        List<int[]> possibleMoves = new ArrayList<>();
-
-        for (int[] place : places) {
-            int x = place[0];
-            int y = place[1];
-
-            for (int[] move : knightMoves) {
-                int newX = x + move[0];
-                int newY = y + move[1];
-
-                if (1 <= newX && newX <= n && 1 <= newY && newY <= n && !containsPosition(possibleMoves, new int[]{newX, newY})) {
-                    possibleMoves.add(new int[]{newX, newY});
-                }
-            }
-        }
-
-        return possibleMoves;
-    }
-
-    private static boolean containsPosition(List<int[]> positions, int[] position) {
-        for (int[] pos : positions) {
-            if (pos[0] == position[0] && pos[1] == position[1]) {
-                return true;
-            }
-        }
-        return false;
-    }
-}
