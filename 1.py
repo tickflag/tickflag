@@ -67,3 +67,25 @@ print(knight(fr, to))
 from math import gcd
 a1, a2, b1, b2 = map(int, input().split())
 print(gcd(b1 - a1, b2 - a2) + 1)
+
+
+letter = str(input())
+s = str(input())
+
+out = ''
+coeff = ((ord(letter) - ord(s[0])))
+if coeff < 0: coeff = 26 + coeff
+coeff -= 1
+
+if s:
+    for i in s:
+        if 
+        if i.isalpha():
+            if i.isupper():
+                out += chr((ord(i) + coeff - 64) % 26 + 65)
+            else:
+                out += chr((ord(i) + coeff - 96) % 26 + 97)
+        else:
+            out += i
+
+print(out)
