@@ -39,3 +39,29 @@ print(out)
 
 Выходные данные. Вывести расшифрованное сообщение, которое может состоять из больших и маленьких букв латинского алфавита, цифр, пробелов и указанных знаков.
 
+
+
+def decrypt_message(start_letter, encrypted_message):
+    result = ''
+    for char in encrypted_message:
+        if char.isalpha():
+            is_upper = char.isupper()
+            char = char.lower()
+            decrypted_char = chr((ord(char) - ord(start_letter) + 26) % 26 + ord('a'))
+            if is_upper:
+                decrypted_char = decrypted_char.upper()
+            result += decrypted_char
+        else:
+            result += char
+    return result
+
+# Ввод данных
+start_letter = input().lower()
+encrypted_message = input()
+
+# Расшифровка сообщения
+decrypted_message = decrypt_message(start_letter, encrypted_message)
+
+# Вывод результата
+print(decrypted_message)
+
