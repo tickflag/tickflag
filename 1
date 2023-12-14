@@ -29,80 +29,41 @@ for i in range(n):
 
 print(out)
 
-Максимальная оценка – 100 баллов.
+knight_moves = [(-2, 1), (-1, 2), (1, 2), (2, 1), (2, -1), (1, -2), (-1, -2), (-2, -1)]
+def knight(p1, p2):
+    p1 = list(p1)
+    p1[1] = int(p1[1])
+    p2 = list(p2)
+    p2[1] = int(p2[1])
+    places = [p1]
+    pos = get_possible_moves(places=places)
+    for tries, _ in enumerate(range(5000), start=1):
+        if p2 in pos: 
+            return tries
+        pos = get_possible_moves(places=pos)
+    
+    
+#4
+def get_possible_moves(places):
 
-Дорогой друг Бильбо имел страсть к изучению криптографии. В один тихий осенний вечер, одолеваемый тоской, он задумался о создании личного кода, позволяющего сохранять в тайне свои заметки от своей кузины Лобелии Саквилль-Бэггинс. Бильбо изобрел код, который может быть использован для шифрования одного и того же сообщения несколькими различными методами.
+    possible_moves = []
+    for place in places:
+        x = place[0]
+        y = place[1]
+        for dx, dy in knight_moves:
+            new_x = x + dx
+            new_y = y + dy
+            if 1 <= new_x <= n and 1 <= new_y <= n and [new_x, new_y] not in possible_moves:
+                possible_moves.append([new_x, new_y])
 
-Даже не догадываясь, он придумал шифр Цезаря – шифр, в котором буква заменяется другой, отстоящей от нее на определенное количество символов - ключ. (Например, если ключ равен 1, то буква «a» заменяется на «b», а буква «z» заменяется на «a», при этом маленькие буквы заменяются маленькими, а большие большими).
+    return possible_moves
 
-Входные данные. В первой строке дана буква латинского алфавита, с которой начинается исходное сообщение. Во второй строке дано зашифрованное сообщение длиной не более 255 символов. Сообщение состоит из больших и маленьких букв латинского алфавита, а также цифр, пробелов, знаков препинания и знаков '@', '#'. Шифровке подвергаются только буквы. Цифры, пробелы и знаки остаются теми же самыми и на тех же местах, что и в исходном тексте.
+n = int(input())
+fr = map(int, input().split())
+to = map(int, input().split())
+print(knight(fr, to))
 
-Выходные данные. Вывести расшифрованное сообщение, которое может состоять из больших и маленьких букв латинского алфавита, цифр, пробелов и указанных знаков.
-
-
-
-def decrypt_message(start_letter, encrypted_message):
-    result = ''
-    for char in encrypted_message:
-        if char.isalpha():
-            is_upper = char.isupper()
-            char = char.lower()
-            decrypted_char = chr((ord(char) - ord(start_letter) + 26) % 26 + ord('a'))
-            if is_upper:
-                decrypted_char = decrypted_char.upper()
-            result += decrypted_char
-        else:
-            result += char
-    return result
-
-# Ввод данных
-start_letter = input().lower()
-encrypted_message = input()
-
-# Расшифровка сообщения
-decrypted_message = decrypt_message(start_letter, encrypted_message)
-
-# Вывод результата
-print(decrypted_message)
-
-Пример
-Ввод	Вывод
-S
-Tfhpeozb Gspep jtqpmojmpt 33 hpeb.
-Segodnya Frodo ispolnilos 33 goda.
-
-
-def decrypt_caesar_cipher(start_letter, encrypted_message):
-    result = ""
-    for char in encrypted_message:
-        if char.isalpha():  # Проверяем, является ли символ буквой
-            if char.islower():  # Если буква строчная
-                decrypted_char = chr((ord(char) - ord(start_letter.lower()) + 26) % 26 + ord('a'))
-            else:  # Если буква заглавная
-                decrypted_char = chr((ord(char) - ord(start_letter.upper()) + 26) % 26 + ord('A'))
-            result += decrypted_char
-        else:
-            result += char  # Оставляем цифры, пробелы и знаки на своих местах
-    return result
-
-# Ввод
-start_letter = input().strip()
-encrypted_message = input().strip()
-
-# Вывод
-print(decrypt_caesar_cipher(start_letter, encrypted_message))
-
-
-letter = str(input())
-s = str(input())
-
-out = ''
-coeff = ((ord(letter) - ord(s[0])))
-if s:
-    for i in s:
-        if i.isalpha():
-            out += chr(ord(i) + coeff)
-        else:
-            out += i
-
-print(out)
+#5
+from math import gcd
+a1, a2, b1, b2 = map(int, input().split())
+print(gcd(b1 - a1, b2 - a2) + 1)
