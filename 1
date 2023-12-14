@@ -91,3 +91,18 @@ encrypted_message = input().strip()
 
 # Вывод
 print(decrypt_caesar_cipher(start_letter, encrypted_message))
+
+
+letter = str(input())
+s = str(input())
+
+out = ''
+coeff = ((ord(letter) - ord(s[0])))
+if s:
+    for i in s:
+        if i.isalpha():
+            out += chr(ord(i) + coeff)
+        else:
+            out += i
+
+print(out)
