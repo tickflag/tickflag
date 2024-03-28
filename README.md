@@ -5,6 +5,7 @@
 
 [link1](https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2Fr6zsMVdCYpP9EjWWy5k7ChlLwgcZylRzAgK%2FL%2BYw42RsakKvnBpKRapi%2BOoXCJmnq%2FJ6bpmRyOJonT3VoXnDag%3D%3D&name=MC.docx&nosw=1)
 
+[link2](https://disk.yandex.ru/d/CDrVZTtGZrIqJQ)
 <!--
 **tickflag/tickflag** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 [](url)
