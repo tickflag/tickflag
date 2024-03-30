@@ -3,10 +3,6 @@
 [![wakatime](https://wakatime.com/badge/user/609e9763-1603-4ffa-b11a-a41d2d127805.svg)](https://wakatime.com/@609e9763-1603-4ffa-b11a-a41d2d127805)
 [![github](https://img.shields.io/github/followers/tickflag?logo=github&style=plastic)](https://github.com/tickflag?tab=followers)
 
-[link1](https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2Fr6zsMVdCYpP9EjWWy5k7ChlLwgcZylRzAgK%2FL%2BYw42RsakKvnBpKRapi%2BOoXCJmnq%2FJ6bpmRyOJonT3VoXnDag%3D%3D&name=MC.docx&nosw=1)
-
-[link3](https://disk.yandex.ru/i/P8xVAWGZf440kA)
-[link2](https://disk.yandex.ru/d/CDrVZTtGZrIqJQ)
 <!--
 **tickflag/tickflag** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 [](url)
